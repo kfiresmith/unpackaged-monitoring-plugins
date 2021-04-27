@@ -13,3 +13,16 @@ If you wrote one of the checks in this repo - thanks!
 
 If you object for some reason to my including your content here, please drop me a line and I'll remove your check and optionally include a pointer to it if you have it hosted elsewhere and wish for people to continue using it. 
 
+
+## Useful checks that are not packaged, but hosted elsewhere:
+**[check_squid](https://git.dinotools.org/monitoring/check_squid)**
+
+This check monitors the following aspects of Squid: Connections (default), Cache, Resources, Memory(broken), FileDescriptors.
+You must have Squid ACLs in place that enable access to the monitoring interface, like so:
+```
+acl monitoring_servers src 123.123.234.10/32 123.123.234.11/32
+
+http_access allow manager monitoring_servers
+http_access deny manager
+```
+You also must have 'squidclient' installed on the Nagios (or Icinga etc) servers.
